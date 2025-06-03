@@ -20,12 +20,12 @@ jobs:
           python-version: "3.10"
 
       - name: Instalar dependências
-        run: robot Atividade0206/tests/teste_login.robot
+        run: |
           python -m pip install --upgrade pip
           pip install robotframework
 
       - name: Instalar navegador e driver
-        run: robot Atividade0206/tests/teste_login.robot
+        run: |
           sudo apt update
           sudo apt install -y wget unzip xvfb libnss3
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -36,7 +36,7 @@ jobs:
           chmod +x /usr/local/bin/chromedriver
 
       - name: Executar testes com Xvfb (modo headless)
-        run: robot Atividade0206/tests/teste_login.robot
+        run: |
           Xvfb :99 & export DISPLAY=:99
           python3 -m http.server 8000 &
           sleep 2
